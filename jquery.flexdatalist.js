@@ -128,7 +128,8 @@ jQuery.fn.flexdatalist = function (_option, _value) {
         keywordParamName: 'keyword',
         limitOfValues: 0,
         valuesSeparator: ',',
-        debug: true
+        debug: true,
+        appendBy: 'body',
     }, _option);
 
     return this.each(function (id) {
@@ -1455,6 +1456,7 @@ jQuery.fn.flexdatalist = function (_option, _value) {
          */
             container: function () {
                 var $target = $this;
+                var options = _this.options.get();
                 if ($multiple) {
                     $target = $multiple;
                 }
@@ -1462,7 +1464,7 @@ jQuery.fn.flexdatalist = function (_option, _value) {
                 if ($container.length === 0) {
                     $container = $('<ul>')
                         .addClass('flexdatalist-results ')
-                        .appendTo('body')
+                        .appendTo(options.appendBy)
                         .attr('id', $alias.attr('id') + '-results')
                         .css({
                             'border-color': $target.css("border-left-color"),
